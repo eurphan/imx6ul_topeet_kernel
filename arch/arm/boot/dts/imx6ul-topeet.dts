@@ -469,19 +469,43 @@
 			fsl,pins = <
 				MX6UL_PAD_UART2_TX_DATA__UART2_DCE_TX	0x1b0b1
 				MX6UL_PAD_UART2_RX_DATA__UART2_DCE_RX	0x1b0b1
-				MX6UL_PAD_UART3_RX_DATA__UART2_DCE_RTS	0x1b0b1
-				MX6UL_PAD_UART3_TX_DATA__UART2_DCE_CTS	0x1b0b1
 			>;
 		};
 
-		pinctrl_uart2dte: uart2dtegrp {
-			fsl,pins = <
-				MX6UL_PAD_UART2_TX_DATA__UART2_DTE_RX	0x1b0b1
-				MX6UL_PAD_UART2_RX_DATA__UART2_DTE_TX	0x1b0b1
-				MX6UL_PAD_UART3_RX_DATA__UART2_DTE_CTS	0x1b0b1
-				MX6UL_PAD_UART3_TX_DATA__UART2_DTE_RTS	0x1b0b1
-			>;
+		pinctrl_uart3: uart3grp {
+             fsl,pins = <
+                MX6UL_PAD_UART3_TX_DATA__UART3_DCE_TX 0x1b0b1
+                MX6UL_PAD_UART3_RX_DATA__UART3_DCE_RX 0x1b0b1
+            >;
 		};
+
+		pinctrl_uart4: uart4grp {
+            fsl,pins = <
+                MX6UL_PAD_UART4_TX_DATA__UART4_DCE_TX 0x1b0b1
+                MX6UL_PAD_UART4_RX_DATA__UART4_DCE_RX 0x1b0b1
+            >;
+        };
+
+		pinctrl_uart5: uart5grp {
+            fsl,pins = <
+                MX6UL_PAD_GPIO1_IO04__UART5_DCE_TX 0x17059
+                MX6UL_PAD_GPIO1_IO05__UART5_DCE_RX 0x17059
+            >;
+        };
+
+		pinctrl_uart6: uart6grp {
+            fsl,pins = <
+                MX6UL_PAD_CSI_MCLK__UART6_DCE_TX 0x17059
+                MX6UL_PAD_CSI_PIXCLK__UART6_DCE_RX 0x17059
+            >;
+        };
+
+		pinctrl_uart7: uart7grp {
+            fsl,pins = <
+                MX6UL_PAD_LCD_DATA16__UART7_DCE_TX 0x17059
+                MX6UL_PAD_LCD_DATA17__UART7_DCE_RX 0x17059
+            >;
+        };
 
 		pinctrl_usdhc1: usdhc1grp {
 			fsl,pins = <
@@ -627,15 +651,6 @@
 	pinctrl-0 = <&pinctrl_qspi>;
 	status = "okay";
 	ddrsmp=<0>;
-
-	flash0: n25q256a@0 {
-		#address-cells = <1>;
-		#size-cells = <1>;
-		compatible = "micron,n25q256a";
-		spi-max-frequency = <29000000>;
-		spi-nor,ddr-quad-read-dummy = <6>;
-		reg = <0>;
-	};
 };
 
 &sai2 {
@@ -675,11 +690,37 @@
 &uart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2>;
-	fsl,uart-has-rtscts;
-	/* for DTE mode, add below change */
-	/* fsl,dte-mode; */
-	/* pinctrl-0 = <&pinctrl_uart2dte>; */
 	status = "okay";
+};
+
+&uart3 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_uart3>;
+        status = "okay";
+};
+
+&uart4 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_uart4>;
+        status = "okay";
+};
+
+&uart5 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_uart5>;
+        status = "okay";
+};
+
+&uart6 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_uart6>;
+        status = "okay";
+};
+
+&uart7 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_uart7>;
+        status = "okay";
 };
 
 &usbotg1 {

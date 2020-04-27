@@ -221,27 +221,6 @@
 	fsl,ldo-bypass = <0>; /* DCDC, ldo-enable */
 };
 
-&i2c1 {
-	clock-frequency = <100000>;
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_i2c1>;
-	status = "okay";
-
-	mag3110@0e {
-		compatible = "fsl,mag3110";
-		reg = <0x0e>;
-		position = <2>;
-	};
-
-	fxls8471@1e {
-		compatible = "fsl,fxls8471";
-		reg = <0x1e>;
-		position = <0>;
-		interrupt-parent = <&gpio5>;
-		interrupts = <0 8>;
-	};
-};
-
 &i2c2 {
 	clock_frequency = <100000>;
 	pinctrl-names = "default";
@@ -457,15 +436,6 @@
 			>;
 		};
 
-		pinctrl_tsc: tscgrp {
-			fsl,pins = <
-				MX6UL_PAD_GPIO1_IO01__GPIO1_IO01	0xb0
-				MX6UL_PAD_GPIO1_IO02__GPIO1_IO02	0xb0
-				MX6UL_PAD_GPIO1_IO03__GPIO1_IO03	0xb0
-				MX6UL_PAD_GPIO1_IO04__GPIO1_IO04	0xb0
-			>;
-		};
-
 		pinctrl_uart1: uart1grp {
 			fsl,pins = <
 				MX6UL_PAD_UART1_TX_DATA__UART1_DCE_TX 0x1b0b1
@@ -671,15 +641,6 @@
 	pinctrl-assert-gpios = <&gpio4 23 GPIO_ACTIVE_HIGH>;
 	port = <1>;
 	sven_low_active;
-	status = "okay";
-};
-
-&tsc {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_tsc>;
-	xnur-gpio = <&gpio1 3 GPIO_ACTIVE_LOW>;
-	measure-delay-time = <0xffff>;
-	pre-charge-time = <0xfff>;
 	status = "okay";
 };
 

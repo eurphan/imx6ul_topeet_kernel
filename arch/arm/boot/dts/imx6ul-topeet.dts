@@ -227,6 +227,17 @@
 	pinctrl-0 = <&pinctrl_i2c2>;
 	status = "okay";
 
+	touchscreen: tsc2007@48 {
+		compatible = "ti,tsc2007";
+		reg = <0x48>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_tsc2007>;
+		interrupt-parent = <&gpio5>;
+		interrupts = <1 0>;
+		gpios = <&gpio5 1 GPIO_ACTIVE_LOW>;
+		ti,x-plate-ohms = <660>;
+	};
+
 	codec: wm8960@1a {
 		compatible = "wlf,wm8960";
 		reg = <0x1a>;
@@ -345,6 +356,12 @@
 			fsl,pins = <
 				MX6UL_PAD_UART5_TX_DATA__I2C2_SCL 0x4001b8b0
 				MX6UL_PAD_UART5_RX_DATA__I2C2_SDA 0x4001b8b0
+			>;
+		};
+		
+		pinctrl_tsc2007: tsc2007grp {
+			fsl,pins = <
+				MX6UL_PAD_SNVS_TAMPER1__GPIO5_IO01      0x80000000
 			>;
 		};
 

@@ -78,6 +78,10 @@ const struct linux_logo * __init_refok fb_find_logo(int depth)
 		/* Generic Linux logo */
 		logo = &logo_linux_clut224;
 #endif
+#ifdef CONFIG_LOGO_TOPEET_CLUT224
+		/* Topeet Linux logo */
+		logo = &logo_topeet_clut224;
+#endif
 #ifdef CONFIG_LOGO_BLACKFIN_CLUT224
 		/* Blackfin Linux logo */
 		logo = &logo_blackfin_clut224;

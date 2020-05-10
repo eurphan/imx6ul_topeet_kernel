@@ -961,6 +961,17 @@ config TOUCHSCREEN_TSC2007
 	  To compile this driver as a module, choose M here: the
 	  module will be called tsc2007.
 
+config TOUCHSCREEN_GT9XX
+	tristate "GT9XX based touchscreens"
+	depends on I2C
+	help
+	  Say Y here if you have a GT9XX based touchscreen.
+
+	  If unsure, say N.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called gt9xx.
+
 config TOUCHSCREEN_W90X900
 	tristate "W90P910 touchscreen driver"
 	depends on ARCH_W90X900
